@@ -1,4 +1,10 @@
 public class Dado extends GameObject {
+  private PImage dado1;
+  private PImage dado2;
+  private PImage dado3;
+  private PImage dado4;
+  private PImage dado5;
+  private PImage dado6;
   private int numeroDado;
   private int numerosLista=4;
   private int [] lista = new int [numerosLista];
@@ -31,67 +37,55 @@ public class Dado extends GameObject {
   }
   
   public void display() {
-    strokeWeight(1);
-    fill(255);
-    rect(posicion.x-90, posicion.y-90, 180, 180);
+    dado1=loadImage("uno.jpg");
+    dado2=loadImage("dos.jpg");
+    dado3=loadImage("tres.jpg");
+    dado4=loadImage("cuatro.jpg");
+    dado5=loadImage("cinco.jpg");
+    dado6=loadImage("seis.jpg");
     if(numeroDado==1) {
-      strokeWeight(25);
-      point(posicion.x, posicion.y);
+      imageMode(CENTER);
+      image(dado1, posicion.x, posicion.y, 180, 180);
       String numero = "UNO";
       fill(0);
       textSize(40);
       textAlign(RIGHT, TOP);
       text(numero, width-20, 20);
     } else if(numeroDado==2) {
-      strokeWeight(25);
-      point(posicion.x+45, posicion.y-45);
-      point(posicion.x-45, posicion.y+45);
+      imageMode(CENTER);
+      image(dado2, posicion.x, posicion.y, 180, 180);
       String numero = "DOS";
       fill(0);
       textSize(40);
       textAlign(RIGHT, TOP);
       text(numero, width-20, 20);
     } else if(numeroDado==3) {
-      strokeWeight(25);
-      point(posicion.x+45, posicion.y-45);
-      point(posicion.x, posicion.y);
-      point(posicion.x-45, posicion.y+45);
+      imageMode(CENTER);
+      image(dado3, posicion.x, posicion.y, 180, 180);
       String numero = "TRES";
       fill(0);
       textSize(40);
       textAlign(RIGHT, TOP);
       text(numero, width-20, 20);
     } else if(numeroDado==4) {
-      strokeWeight(25);
-      point(posicion.x-45, posicion.y-45);
-      point(posicion.x+45, posicion.y-45);
-      point(posicion.x-45, posicion.y+45);
-      point(posicion.x+45, posicion.y+45);
+      imageMode(CENTER);
+      image(dado4, posicion.x, posicion.y, 180, 180);
       String numero = "CUATRO";
       fill(0);
       textSize(40);
       textAlign(RIGHT, TOP);
       text(numero, width-20, 20);
     } else if(numeroDado==5) {
-      strokeWeight(25);
-      point(posicion.x-45, posicion.y-45);
-      point(posicion.x+45, posicion.y-45);
-      point(posicion.x, posicion.y);
-      point(posicion.x-45, posicion.y+45);
-      point(posicion.x+45, posicion.y+45);
+      imageMode(CENTER);
+      image(dado5, posicion.x, posicion.y, 180, 180);
       String numero = "CINCO";
       fill(0);
       textSize(40);
       textAlign(RIGHT, TOP);
       text(numero, width-20, 20);
     } else if(numeroDado==6) {
-      strokeWeight(25);
-      point(posicion.x-45, posicion.y-45);
-      point(posicion.x+45, posicion.y-45);
-      point(posicion.x-45, posicion.y);
-      point(posicion.x+45, posicion.y);
-      point(posicion.x-45, posicion.y+45);
-      point(posicion.x+45, posicion.y+45);
+      imageMode(CENTER);
+      image(dado6, posicion.x, posicion.y, 180, 180);
       String numero = "SEIS";
       fill(0);
       textSize(40);
