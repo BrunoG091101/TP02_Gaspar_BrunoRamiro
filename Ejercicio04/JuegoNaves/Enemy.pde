@@ -1,4 +1,4 @@
-public class Enemy implements IDisplayable, IMoveable {
+class Enemy implements IDisplayable, IMoveable {
   private PImage naveEnemiga;
   private PVector posicionNaveE;
   private PVector velocidadNaveE;

@@ -1,11 +1,18 @@
-Nave naves;
-Enemy naveEnemiga1;
-Enemy naveEnemiga2;
-Enemy naveEnemiga3;
+private PImage fondoEspacio;
+private Nave naves;
+private SpawnerBalas spawnerBalas;
+private Enemy naveEnemiga1;
+private Enemy naveEnemiga2;
+private Enemy naveEnemiga3;
+private int cantAsteroides;
+private ArrayList<Asteroid> asteroides;
+private int tiempoAsteroide;
 
 public void setup() {
   size(800, 800);
+  fondoEspacio = loadImage("fondoEspacio.jpg");
   naves = new Nave();
+  spawnerBalas = new SpawnerBalas();
   naves.setPosicionJugador1(new PVector((width/2)/2-30, height/2));
   naves.setVelocidadJugador1(new PVector(50, 50));
   naves.setPosicionJugador2(new PVector(((width/2)/2)*3-115, height/2));
@@ -19,10 +26,13 @@ public void setup() {
   naveEnemiga3 = new Enemy();
   naveEnemiga3.setPosicionNaveE(new PVector(width-120, 250));
   naveEnemiga3.setVelocidadNaveE(new PVector(-20, 0));
+  asteroides = new ArrayList<Asteroid>();
+  cantAsteroides = 0;
 }
 
 public void draw() {
   background(0);
+  image(fondoEspacio, 0, 0);
   naves.display();
   naves.mover();
   naves.readCommand();
@@ -32,4 +42,23 @@ public void draw() {
   naveEnemiga2.mover();
   naveEnemiga3.display();
   naveEnemiga3.mover();
+  
+  if(millis() - tiempoAsteroide >= 2000 && cantAsteroides < 3) {
+    tiempoAsteroide = millis();
+    Asteroid nuevoAsteroide = new Asteroid();
+    nuevoAsteroide.setPosicionAsteroide(new PVector(random(0, width-75), 0));
+    nuevoAsteroide.setVelocidadAsteroide(new PVector(0, 30));
+    asteroides.add(nuevoAsteroide);
+    cantAsteroides++;
+  }
+  
+  for(int i=0; i<asteroides.size(); i++) {
+    Asteroid asteroide = asteroides.get(i);
+    asteroide.display();
+    asteroide.mover();
+    if(asteroide.posicionAsteroide.y>height+80) {
+      asteroides.remove(i);
+      cantAsteroides--;
+    }
+  }
 }

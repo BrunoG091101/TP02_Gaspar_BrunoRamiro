@@ -1,4 +1,4 @@
-public class Nave implements IDisplayable, IController, IMoveable {
+class Nave implements IDisplayable, IController, IMoveable {
   private PImage jugador1;
   private PImage jugador2;
   private PVector posicionJugador1;
