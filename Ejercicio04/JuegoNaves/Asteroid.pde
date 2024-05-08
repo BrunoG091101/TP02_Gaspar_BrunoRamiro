@@ -1,38 +1,19 @@
-class Asteroid implements IDisplayable, IMoveable {
-  private PImage asteroide;
-  private PVector posicionAsteroide;
-  private PVector velocidadAsteroide;
+class Asteroid extends GameObject implements IDisplayable, IMoveable {
   
   public Asteroid() {
   }
   
-  public Asteroid(PVector posicionAsteroide, PVector velocidadAsteroide) {
-    this.posicionAsteroide=posicionAsteroide;
-    this.velocidadAsteroide=velocidadAsteroide;
-  }
-  
-  public PVector getPosicionAsteroide() {
-    return this.posicionAsteroide;
-  }
-  
-  public void setPosicionAsteroide(PVector posicionAsteroide) {
-    this.posicionAsteroide=posicionAsteroide;
-  }
-  
-  public PVector getVelocidadAsteroide() {
-    return this.getVelocidadAsteroide();
-  }
-  
-  public void setVelocidadAsteroide(PVector velocidadAsteroide) {
-    this.velocidadAsteroide=velocidadAsteroide;
+  public Asteroid(PVector posicion, PVector velocidad) {
+    this.posicion=posicion;
+    this.velocidad=velocidad;
   }
   
   public void display() {
-    asteroide = loadImage("asteroide.png");
-    image(asteroide, posicionAsteroide.x, posicionAsteroide.y, 80, 80);
+    imagen = loadImage("asteroide.png");
+    image(imagen, posicion.x, posicion.y, 80, 80);
   }
   
   public void mover() {
-    posicionAsteroide.y+=velocidadAsteroide.y;
+    posicion.y+=velocidad.y;
   }
 }

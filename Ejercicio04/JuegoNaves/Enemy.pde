@@ -1,38 +1,24 @@
-class Enemy implements IDisplayable, IMoveable {
-  private PImage naveEnemiga;
-  private PVector posicionNaveE;
-  private PVector velocidadNaveE;
+class Enemy extends GameObject implements IDisplayable, IMoveable {
   
   public Enemy() {
   }
   
-  public PVector getPosicionNaveE() {
-    return this.posicionNaveE;
-  }
-  
-  public void setPosicionNaveE(PVector posicionNaveE) {
-    this.posicionNaveE=posicionNaveE;
-  }
-  
-  public PVector getVelocidadNaveE() {
-    return this.velocidadNaveE;
-  }
-  
-  public void setVelocidadNaveE(PVector velocidadNaveE) {
-    this.velocidadNaveE=velocidadNaveE;
+  public Enemy(PVector posicion, PVector velocidad) {
+    this.posicion=posicion;
+    this.velocidad=velocidad;
   }
   
   public void display() {
-    naveEnemiga=loadImage("naveEnemiga.png");
-    image(naveEnemiga, posicionNaveE.x, posicionNaveE.y, 100, 100);
+    imagen=loadImage("naveEnemiga.png");
+    image(imagen, posicion.x, posicion.y, 100, 100);
   }
   
   public void mover() {
-    posicionNaveE.x-=velocidadNaveE.x;
-    if(posicionNaveE.x>=width-110) {
-      velocidadNaveE.x*=-1;
-    } else if(posicionNaveE.x<=10) {
-      velocidadNaveE.x*=-1;
+    posicion.x-=velocidad.x;
+    if(posicion.x>=width-110) {
+      velocidad.x*=-1;
+    } else if(posicion.x<=10) {
+      velocidad.x*=-1;
     }
   }
 }

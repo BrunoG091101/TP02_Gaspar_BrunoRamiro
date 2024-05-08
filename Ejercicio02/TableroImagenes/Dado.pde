@@ -17,6 +17,10 @@ public class Dado extends GameObject {
     this.posicion=posicion;
   }
   
+  public int getNumeroDado() {
+    return this.numeroDado;
+  }
+  
   public void tirarDado() {
     if(dadosLista<numerosLista) {
       println("Inicio de la lista");
@@ -46,51 +50,21 @@ public class Dado extends GameObject {
     if(numeroDado==1) {
       imageMode(CENTER);
       image(dado1, posicion.x, posicion.y, 180, 180);
-      String numero = "UNO";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==2) {
       imageMode(CENTER);
       image(dado2, posicion.x, posicion.y, 180, 180);
-      String numero = "DOS";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==3) {
       imageMode(CENTER);
       image(dado3, posicion.x, posicion.y, 180, 180);
-      String numero = "TRES";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==4) {
       imageMode(CENTER);
       image(dado4, posicion.x, posicion.y, 180, 180);
-      String numero = "CUATRO";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==5) {
       imageMode(CENTER);
       image(dado5, posicion.x, posicion.y, 180, 180);
-      String numero = "CINCO";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==6) {
       imageMode(CENTER);
       image(dado6, posicion.x, posicion.y, 180, 180);
-      String numero = "SEIS";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     }
   }  
 }

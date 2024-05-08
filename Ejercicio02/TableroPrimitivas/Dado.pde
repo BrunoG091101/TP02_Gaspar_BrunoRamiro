@@ -11,6 +11,10 @@ public class Dado extends GameObject {
     this.posicion=posicion;
   }
   
+  public int getNumeroDado() {
+    return this.numeroDado;
+  }
+  
   public void tirarDado() {
     if(dadosLista<numerosLista) {
       println("Inicio de la lista");
@@ -37,41 +41,21 @@ public class Dado extends GameObject {
     if(numeroDado==1) {
       strokeWeight(25);
       point(posicion.x, posicion.y);
-      String numero = "UNO";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==2) {
       strokeWeight(25);
       point(posicion.x+45, posicion.y-45);
       point(posicion.x-45, posicion.y+45);
-      String numero = "DOS";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==3) {
       strokeWeight(25);
       point(posicion.x+45, posicion.y-45);
       point(posicion.x, posicion.y);
       point(posicion.x-45, posicion.y+45);
-      String numero = "TRES";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==4) {
       strokeWeight(25);
       point(posicion.x-45, posicion.y-45);
       point(posicion.x+45, posicion.y-45);
       point(posicion.x-45, posicion.y+45);
       point(posicion.x+45, posicion.y+45);
-      String numero = "CUATRO";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==5) {
       strokeWeight(25);
       point(posicion.x-45, posicion.y-45);
@@ -79,11 +63,6 @@ public class Dado extends GameObject {
       point(posicion.x, posicion.y);
       point(posicion.x-45, posicion.y+45);
       point(posicion.x+45, posicion.y+45);
-      String numero = "CINCO";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     } else if(numeroDado==6) {
       strokeWeight(25);
       point(posicion.x-45, posicion.y-45);
@@ -92,11 +71,6 @@ public class Dado extends GameObject {
       point(posicion.x+45, posicion.y);
       point(posicion.x-45, posicion.y+45);
       point(posicion.x+45, posicion.y+45);
-      String numero = "SEIS";
-      fill(0);
-      textSize(40);
-      textAlign(RIGHT, TOP);
-      text(numero, width-20, 20);
     }
   }  
 }
