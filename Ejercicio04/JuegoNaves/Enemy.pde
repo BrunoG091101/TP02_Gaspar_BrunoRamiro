@@ -1,6 +1,8 @@
 class Enemy extends GameObject implements IDisplayable, IMoveable {
+  private int millisIniciales;
   
   public Enemy() {
+    millisIniciales = millis();
   }
   
   public Enemy(PVector posicion, PVector velocidad) {
@@ -10,15 +12,19 @@ class Enemy extends GameObject implements IDisplayable, IMoveable {
   
   public void display() {
     imagen=loadImage("naveEnemiga.png");
+    imageMode(CENTER);
     image(imagen, posicion.x, posicion.y, 100, 100);
   }
   
   public void mover() {
-    posicion.x-=velocidad.x;
-    if(posicion.x>=width-110) {
+    int millisActuales = millis();
+    float deltaTime = (millisIniciales - millisActuales) / 1000.0;
+    posicion.x-=velocidad.x*deltaTime;
+    if(posicion.x>width-80) {
       velocidad.x*=-1;
-    } else if(posicion.x<=10) {
+    } else if(posicion.x<80) {
       velocidad.x*=-1;
     }
+    millisIniciales = millisActuales;
   }
 }

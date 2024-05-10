@@ -10,6 +10,7 @@ class Asteroid extends GameObject implements IDisplayable, IMoveable {
   
   public void display() {
     imagen = loadImage("asteroide.png");
+    imageMode(CENTER);
     image(imagen, posicion.x, posicion.y, 80, 80);
   }
   
