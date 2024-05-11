@@ -4,5 +4,5 @@ abstract class GameObject {
   protected PImage imagen;
   
   abstract void display();
-  abstract void mover(int direccion);
+  abstract void mover(int direccion, float deltaTime);
 }

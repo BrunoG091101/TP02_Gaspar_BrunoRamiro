@@ -37,7 +37,7 @@ public class Dado extends GameObject {
   public void display() {
     strokeWeight(1);
     fill(255);
-    rect(posicion.x-90, posicion.y-90, 180, 180);
+    rect(posicion.x, posicion.y, 180, 180);
     if(numeroDado==1) {
       strokeWeight(25);
       point(posicion.x, posicion.y);

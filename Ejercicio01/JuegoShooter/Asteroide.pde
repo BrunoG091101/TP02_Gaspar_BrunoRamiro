@@ -14,12 +14,13 @@ class Asteroide extends GameObject {
     image(imagen, posicion.x, posicion.y, 80, 80);
   }
   
-  public void mover(int direccion) {
+  public void mover(int direccion, float deltaTime) {
     switch(direccion) {
       case 0:{
-        posicion.x-=velocidad.x;
-        break;
+        posicion.x-=velocidad.x*deltaTime;
+      break;
       }
     }
+    //posicion.add(PVector.mult(velocidad, deltaTime));
   }
 }

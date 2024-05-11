@@ -19,14 +19,12 @@ class Nave implements IDisplayable, IController, IMoveable {
   private Bala[] balasJugador2;
   private PImage balaJ2;
   private int indiceBalasJ2;
-  private int millisIniciales; // Con "millis" se refiere a milisegundos
   
   public Nave() {
     balasJugador1 = new Bala[100];
     indiceBalasJ1 = 0;
     balasJugador2 = new Bala[150];
     indiceBalasJ2 = 0;
-    millisIniciales = millis();
   }
   
   public PVector getPosicionJugador1() {
@@ -132,10 +130,7 @@ class Nave implements IDisplayable, IController, IMoveable {
     }
   }
   
-  public void mover() {
-    
-    int millisActuales = millis();
-    float deltaTime = (millisActuales - millisIniciales) / 1000.0;
+  public void mover(float deltaTime) {
     
     // Según sea el caso, la nave del jugador 1 se moverá a la dirección indicada
     
@@ -160,14 +155,12 @@ class Nave implements IDisplayable, IController, IMoveable {
     } else if(derechaJugador2==true) {
       posicionJugador2.x+=velocidadJugador2.x*deltaTime;
     }
-    
-    millisIniciales = millisActuales;
   }
   
-  public void dispararBalasJ1(Bala[] balasJugador1) {
+  public void dispararBalasJ1(Bala[] balasJugador1, float deltaTime) {
     
     if(keyPressed && (key=='t' || key=='T')) {
-      balasJugador1[indiceBalasJ1++] = new Bala(new PVector(posicionJugador1.x, posicionJugador1.y-80), new PVector(0, 75), balaJ1); // Agregación de una nueva bala a la lista balasJugador1 cada que se presiona la tecla "T"
+      balasJugador1[indiceBalasJ1++] = new Bala(new PVector(posicionJugador1.x, posicionJugador1.y-80), new PVector(0, 75*deltaTime), balaJ1); // Agregación de una nueva bala a la lista balasJugador1 cada que se presiona la tecla "T"
     }
     
     for(int i=0; i<indiceBalasJ1; i++) {
@@ -187,10 +180,10 @@ class Nave implements IDisplayable, IController, IMoveable {
     }
   }
   
-  public void dispararBalasJ2(Bala[] balasJugador2) {
+  public void dispararBalasJ2(Bala[] balasJugador2, float deltaTime) {
     
     if(keyPressed && (key=='p' || key=='P')) {
-      balasJugador2[indiceBalasJ2++] = new Bala(new PVector(posicionJugador2.x, posicionJugador2.y-60), new PVector(0, 45), balaJ2); // Agregación de una nueva bala a la lista balasJugador2 cada que se presiona la tecla "P"
+      balasJugador2[indiceBalasJ2++] = new Bala(new PVector(posicionJugador2.x, posicionJugador2.y-60), new PVector(0, 45*deltaTime), balaJ2); // Agregación de una nueva bala a la lista balasJugador2 cada que se presiona la tecla "P"
     }
     
     for(int i=0; i<indiceBalasJ2; i++) {

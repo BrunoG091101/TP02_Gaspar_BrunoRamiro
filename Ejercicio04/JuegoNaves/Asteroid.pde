@@ -14,7 +14,7 @@ class Asteroid extends GameObject implements IDisplayable, IMoveable {
     image(imagen, posicion.x, posicion.y, 80, 80);
   }
   
-  public void mover() {
-    posicion.y+=velocidad.y;
+  public void mover(float deltaTime) {
+    posicion.y+=velocidad.y*deltaTime;
   }
 }

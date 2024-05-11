@@ -10,9 +10,12 @@ private Enemy naveEnemiga3;
 private Asteroid[] asteroides;
 private int cantAsteroides;
 private int tiempoAsteroide;
+private int framesPorSegundo;
+private float deltaTime;
 
 public void setup() {
   size(800, 800);
+  frameRate(10);
   minim = new Minim(this);
   musicaJuegoNaves = minim.loadFile("musicaJuegoNaves.mp3");
   fondoEspacio = loadImage("fondoEspacio.jpg");
@@ -29,7 +32,8 @@ public void setup() {
 }
 
 public void draw() {
-  background(0);
+  framesPorSegundo = round(frameRate);
+  deltaTime = 1.0/framesPorSegundo;
   imageMode(CENTER);
   image(fondoEspacio, width/2, height/2);
   musicaJuegoNaves.play();
@@ -39,26 +43,26 @@ public void draw() {
   }
   
   naves.display();
-  naves.mover();
   naves.readCommand();
-  naves.dispararBalasJ1(naves.balasJugador1);
-  naves.dispararBalasJ2(naves.balasJugador2);
+  naves.mover(deltaTime);
+  naves.dispararBalasJ1(naves.balasJugador1, deltaTime);
+  naves.dispararBalasJ2(naves.balasJugador2, deltaTime);
   naveEnemiga1.display();
-  naveEnemiga1.mover();
+  naveEnemiga1.mover(deltaTime);
   naveEnemiga2.display();
-  naveEnemiga2.mover();
+  naveEnemiga2.mover(deltaTime);
   naveEnemiga3.display();
-  naveEnemiga3.mover();
+  naveEnemiga3.mover(deltaTime);
   
-  if(millis() - tiempoAsteroide >= 2000 && cantAsteroides < 4) {
+  if((millis() - tiempoAsteroide) * deltaTime >= 700 && cantAsteroides < 4) {
     tiempoAsteroide = millis();
-    asteroides[cantAsteroides++] = new Asteroid(new PVector(random(30, width-30), 0), new PVector(0, 20));
+    asteroides[cantAsteroides++] = new Asteroid(new PVector(random(30, width-30), 0), new PVector(0, 100));
   }
   
   for(int i=0; i<cantAsteroides; i++) {
     Asteroid asteroide = asteroides[i];
     asteroide.display();
-    asteroide.mover();
+    asteroide.mover(deltaTime);
     if(asteroide.posicion.y>height+80) {
       for(int j=i; j<cantAsteroides-1; j++) {
         asteroides[j] = asteroides [j+1];

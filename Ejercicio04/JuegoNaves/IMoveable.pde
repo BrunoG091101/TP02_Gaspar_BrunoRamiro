@@ -1,3 +1,3 @@
 interface IMoveable {
-  void mover();
+  void mover(float deltaTime);
 }
