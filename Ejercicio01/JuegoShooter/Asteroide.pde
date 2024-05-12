@@ -21,6 +21,5 @@ class Asteroide extends GameObject {
       break;
       }
     }
-    //posicion.add(PVector.mult(velocidad, deltaTime));
   }
 }
